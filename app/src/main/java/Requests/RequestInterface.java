@@ -2,9 +2,11 @@ package Requests;
 
 import java.io.IOException;
 
-import okhttp3.Response;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 public interface RequestInterface {
-    public void run();
-    public Response getResponse() throws IOException;
+    public void run() throws IOException;
+    public Integer getResponseCode();
+    public JSONObject parseResponse() throws IOException, ParseException;
 }

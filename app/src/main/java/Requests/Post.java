@@ -2,6 +2,10 @@ package Requests;
 
 import java.io.IOException;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
@@ -13,7 +17,7 @@ public class Post implements RequestInterface {
     public String url;
     public RequestBody requestBody;
     public final MediaType JSON = MediaType.get("application/json");
-    private Request request;
+    private Response response;
 
     public Post(String url, String json) {
         this.client = new OkHttpClient();
@@ -21,18 +25,27 @@ public class Post implements RequestInterface {
         this.requestBody = RequestBody.create(json, this.JSON);
     }
 
-    public void run() {
-        this.request = new Request.Builder()
+    public void run() throws IOException {
+        Request request = new Request.Builder()
             .url(this.url)
             .post(this.requestBody)
             .build();
+        this.response = this.getResponse(request);
     }
 
-    public Response getResponse() throws IOException {
-        Response response = this.client.newCall(this.request).execute();
+    private Response getResponse(Request request) throws IOException {
+        Response response = this.client.newCall(request).execute();
         if (!response.isSuccessful()) {throw new IOException("Unexpected code: " + response);}
         return response;
     }
 
+    public Integer getResponseCode() {
+        return this.response.code();
+    }
 
+    public JSONObject parseResponse() throws IOException, ParseException {
+        String responseString = this.response.body().string();
+        JSONParser parser = new JSONParser();
+        return (JSONObject) parser.parse(responseString);
+    }
 }
