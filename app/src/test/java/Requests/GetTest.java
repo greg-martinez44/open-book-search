@@ -1,14 +1,11 @@
 package Requests;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
-import okhttp3.Response;
 
 public class GetTest {
 
