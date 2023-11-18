@@ -9,3 +9,9 @@ java_starting_point
 
 # Ignore VS Code files
 .vscode
+
+# Ignore virtual environment files
+.venv
+
+# Ignore compiled python
+**__pycache__
