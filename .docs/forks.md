@@ -13,9 +13,10 @@ Read more in the GitHub documentation:
 ## Syncing a fork
 
 In order to keep your local copy of the repository synced with the upstream source, you have to create a remote that points to that upstream repository.
-```
-$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
-$ git remote -v
+
+```bash
+git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+git remote -v
 > origin git@github.com:YOUR_USERNAME/YOUR_FORK.git (fetch)
 > origin git@github.com:YOUR_USERNAME/YOUR_FORK.git (push)
 > upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
@@ -23,8 +24,9 @@ $ git remote -v
 ```
 
 Once you have a remote configured for the upstream repository, you can fetch and merge from the default branch.
-```
-$ git fetch upstream
-$ git checkout master
-$ git merge upstream/master
+
+```bash
+git fetch upstream
+git checkout master
+git merge upstream/master
 ```
