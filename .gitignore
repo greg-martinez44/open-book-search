@@ -15,3 +15,6 @@ java_starting_point
 
 # Ignore compiled python
 **__pycache__
+
+# Ignore test files
+tests/test_files
